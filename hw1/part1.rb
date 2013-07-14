@@ -13,6 +13,12 @@ end
 
 def count_words(str)
   # YOUR CODE HERE
+  words = str.split(/[^a-zA-Z]/)
+
+  counter = Hash.new(0)
+  words.each { |word| counter[word.downcase.gsub(/\d|\W/,"")] += 1 }
+
+  counter
 end
 
 
@@ -58,3 +64,9 @@ test_str = "The rent is due on the first day of the month unless the first day o
 
 word_count = count_words test_str
 puts word_count
+
+
+puts count_words("A man, a plan, a canal -- Panama")
+    # => {'a' => 3, 'man' => 1, 'canal' => 1, 'panama' => 1, 'plan' => 1}
+puts count_words "Doo bee doo bee doo"
+    # => {'doo' => 3, 'bee' => 2}
