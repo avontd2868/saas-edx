@@ -4,7 +4,11 @@
 
 
 def palindrome?(str)
-  # YOUR CODE HERE
+  # First convert string to lowercase and remove all non-word characters
+  clean_str = str.downcase.gsub(/\d|\W/,"")
+
+  # Then compare it with the revese of itself
+  clean_str == clean_str.reverse
 end
 
 def count_words(str)
@@ -18,14 +22,31 @@ end
 test_str = "there goes the neighborhood"
 
 if palindrome? test_str
+  puts test_str + " => is a palindrome!"
+else
+  puts test_str + " => is NOT a palindrome!"
+end
+
+
+test_str = "Madam, I'm Adam"
+
+if palindrome? test_str
   puts test_str + " is a palindrome!"
 else
   puts test_str + " is NOT a palindrome!"
 end
 
 
-test_str = "Madam, I'm Adam"
 
+test_str = "A man, a plan, a canal -- Panama"  # => true
+
+if palindrome? test_str
+  puts test_str + " is a palindrome!"
+else
+  puts test_str + " is NOT a palindrome!"
+end
+
+test_str = "Abracadabra"                      # => false (nil is also ok)
 if palindrome? test_str
   puts test_str + " is a palindrome!"
 else
